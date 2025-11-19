@@ -1,16 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Baseball Bros</title>
-  <style>body,html{margin:0;padding:0;height:100%;}</style>
+  <meta charset="UTF-8">
+  <title>Baseball Bros | Unblocked</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: black;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
-  <iframe id="game" width="100%" height="100%" frameborder="0"></iframe>
+
+  <iframe id="game"></iframe>
 
   <script>
-    const gameURL = "https://SITE-THAT-HOSTS-BASEBALLBROS.COM/"; 
-    document.getElementById("game").src =
-      "/api/proxy?url=" + encodeURIComponent(https://baseballbros.io);
+    const target = "https://baseballbros.io/";
+    const proxied = "/api/proxy?url=" + encodeURIComponent(target);
+    document.getElementById("game").src = proxied;
   </script>
+
 </body>
 </html>
