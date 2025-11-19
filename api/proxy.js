@@ -1,12 +1,17 @@
 export default async function handler(req, res) {
-  const target = req.query.url;
-  if (!target) return res.status(400).send("Missing ?url=");
+  try {
+    const target = req.query.url;
+    if (!target) return res.status(400).send("Missing ?url=");
 
-  const r = await fetch(target);
-  const buf = await r.arrayBuffer();
+    const response = await fetch(target);
+    const buffer = await response.arrayBuffer();
 
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Content-Type", r.headers.get("content-type") || "text/html");
+    // Allow the game to load from anywhere
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Content-Type", response.headers.get("content-type") || "text/html");
 
-  res.send(Buffer.from(buf));
+    res.send(Buffer.from(buffer));
+  } catch (e) {
+    res.status(500).send("Proxy error: " + e.message);
+  }
 }
